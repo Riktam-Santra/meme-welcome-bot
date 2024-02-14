@@ -19,7 +19,7 @@ class ServerBannerGenerator {
         let ctx_av2 = this.av2_canvas.getContext("2d");
 
         const img = await loadImage("./resources/server_banner.png");
-        const av_1 = await loadImage(member.displayAvatarURL());
+        const av_1 = await loadImage(member.displayAvatarURL({extension: 'png'}));
         const av_2 = await loadImage("./resources/server_icon.jpg");
 
         ctx.drawImage(img, 0, 0, 1114, 631);
@@ -77,7 +77,7 @@ class ServerBannerGenerator {
         const buffer2 = this.canvas.toBuffer();
 
         fs.writeFile('test.png', buffer2, function (e) { console.log(e); });
-        }
+    }
 
     rgbToHex(r, g, b) {
         if (r > 255 || g > 255 || b > 255)
