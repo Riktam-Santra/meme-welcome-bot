@@ -1,4 +1,5 @@
 const { Canvas, ImageData, loadImage } = require("canvas");
+const { GuildMember } = require("discord.js");
 const fs = require('fs');
 
 class ServerBannerGenerator {
@@ -10,15 +11,15 @@ class ServerBannerGenerator {
 
     /**
      * 
-     * @param {String} imageurl 
+     * @param {GuildMember} member 
      */
-    async generate(imageurl) {
+    async generate(member) {
         let ctx = this.canvas.getContext("2d");
         let ctx_av1 = this.av1_canvas.getContext("2d");
         let ctx_av2 = this.av2_canvas.getContext("2d");
 
         const img = await loadImage("./resources/server_banner.png");
-        const av_1 = await loadImage(imageurl);
+        const av_1 = await loadImage(member.displayAvatarURL());
         const av_2 = await loadImage("./resources/server_icon.jpg");
 
         ctx.drawImage(img, 0, 0, 1114, 631);
@@ -68,8 +69,8 @@ class ServerBannerGenerator {
         ctx.fillText("Shushant X Buddy", 300, 275)
         ctx.textAlign = "center"
         ctx.font = "75px Arial"
-        let measure = ctx.measureText("karna.satva")
-        ctx.fillText("karna.satva", 350 + (measure.width/2), 500)
+        let measure = ctx.measureText(member.displayName)
+        ctx.fillText(member.displayName, 350 + (measure.width/2), 500)
         
 
         ctx.save()
