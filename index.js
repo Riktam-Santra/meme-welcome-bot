@@ -20,7 +20,7 @@ const config = require('./config.json');
 	for (const file of fs.readdirSync("./src/events/").filter(file => file.endsWith(".js"))) {
 		console.log(file);
 		const event = require(`./src/events/${file}`);
-		client.on(file.split(".")[0], (...args) => event.run(...args));
+		client.on(file.split(".")[0], (...args) => event.run(client, ...args));
 	}
 
 	await client.login(config.token);

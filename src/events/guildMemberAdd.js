@@ -19,9 +19,7 @@ module.exports = {
         let channel = guild.channels.cache.get("1165759162131697674");
 
         let generator = new ServerBannerGenerator();
-        let av_req = await fetch(member.displayAvatarURL());
-        let img_buffer = await av_req.arrayBuffer();
-        await generator.generate(img_buffer);
+        await generator.generate(member.displayAvatarURL());
         await channel.send({files: [{attachment: "test.png"}]});
     }
 };

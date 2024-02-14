@@ -1,4 +1,4 @@
-const { Canvas, loadImage } = require("canvas");
+const { Canvas, ImageData, loadImage } = require("canvas");
 const fs = require('fs');
 
 class ServerBannerGenerator {
@@ -10,15 +10,15 @@ class ServerBannerGenerator {
 
     /**
      * 
-     * @param {Uint8Array} buffer 
+     * @param {String} imageurl 
      */
-    async generate(buffer) {
+    async generate(imageurl) {
         let ctx = this.canvas.getContext("2d");
         let ctx_av1 = this.av1_canvas.getContext("2d");
         let ctx_av2 = this.av2_canvas.getContext("2d");
 
         const img = await loadImage("./resources/server_banner.png");
-        const av_1 = await loadImage("./temp_img/av_1.png");
+        const av_1 = await loadImage(imageurl);
         const av_2 = await loadImage("./resources/server_icon.jpg");
 
         ctx.drawImage(img, 0, 0, 1114, 631);
