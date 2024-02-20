@@ -8,6 +8,9 @@ module.exports = {
      * @param {GuildMember} member 
      */
     async run(client, member) {
+        if(member.guild.id != "758245752836325386") {
+            return;
+        }
         
         let guild;
         if(client.guilds.cache) {
