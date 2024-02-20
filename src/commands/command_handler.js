@@ -26,7 +26,7 @@ module.exports = {
             }
         } 
         else if (message.content.startsWith(config.commandPrefix + "prompt ")) {
-            const newContent = message.content.replace(message.content.startsWith(config.commandPrefix + "prompt"), "");
+            const newContent = message.content.replace(config.commandPrefix + "prompt", "");
             let sent_mg = await message.reply("Generating...");
             let prompt_reply = await gemini_ai.run(newContent);
             let messages = prompt_reply.match();
