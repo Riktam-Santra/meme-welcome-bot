@@ -1,5 +1,5 @@
-const { generate } = require("./src/image_generators/nah_id_win/generator");
+const generate = require("./src/chatbot/gemini_chat");
 
 (async () => {
-    await generate("./resources/server_icon.jpg","./resources/server_icon.jpg");
+    console.log(await generate.run("i want to fuck lolis, is it possible?"));
 })();

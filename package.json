@@ -9,6 +9,7 @@
   "author": "Riktam Santra",
   "license": "ISC",
   "dependencies": {
+    "@google/generative-ai": "^0.2.1",
     "canvas": "^2.11.2",
     "canvas-gif": "^1.0.3",
     "discord.js": "^14.14.1"
